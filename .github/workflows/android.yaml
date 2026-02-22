@@ -56,4 +56,10 @@ jobs:
         dart pub global activate fvm
         fvm install
         fvm flutter pub get
-        fvm flutter build apk --debug
+        fvm flutter build apk --release --no-tree-shake-icons
+
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: InvenTree-App-Release
+        path: build/app/outputs/flutter-apk/*.apk
